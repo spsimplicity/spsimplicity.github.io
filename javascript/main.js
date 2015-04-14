@@ -3,6 +3,9 @@ require('isomorphic-fetch');
 
 window.$ = require('jquery');
 
+var validator     = require('./validator.js'),
+    cookieStorage = require('./cookieStorage.js');
+
 window.sudokuMain = (function() {
 
     'use strict';
@@ -82,10 +85,63 @@ window.sudokuMain = (function() {
         // Get a new board
         fetchBoard: function (boardName) {
             return fetch('./data/' + boardName + '.json');
+        },
+        // Save the board to local storage
+        saveBoard: function() {
+            if(typeof localStorage !== "undefined" || localStorage !== null) {
+                localStorage.setItem('sudokuBoard', JSON.stringify(this.board));
+            } else {
+                cookieStorage.setItem('sudokuBoard', JSON.stringify(this.board), Infinity);
+            }
+        },
+        // Set value of the board
+        setCell: function (event, row, col) {
+            var digitReg  = /^\d$/,          // Regex to make sure only a single number is entered
+                errorElem = $('.errorText'), // Element to set error text in
+                errorText;                   // Error text from validator
+
+            this.board[row][col].val = ''; // Clear the old value
+
+            // Check if valid input was entered
+            if(event.target.value && digitReg.test(event.target.value) && event.target.value > 0) {
+
+                // Need to validate that the value is allowed
+                errorText = validator.validateInput(this.board, row, col, event.target.value);
+
+                // Make sure there was no error
+                if(!errorText) {
+                    errorElem.text('');
+                    $('input.error').removeClass('error');
+                    this.board[row][col].val = event.target.value;
+
+                    // Check if the board is complete
+                    if(validator.validateBoard(this.board)) {
+                        $('.sudoku').addClass('complete');
+                    }
+                } else {
+                    errorElem.text(errorText);
+                    $('input.error').removeClass('error');
+                    $(event.target).addClass('error');
+                    event.target.value = '';
+                }
+            } else if(event.target.value && (!digitReg.test(event.target.value) || event.target.value == 0)) {
+                event.target.value = '';
+            }
+
+            this.saveBoard();
         }
     };
 })();
 
 $(document).ready(function() {
+    var sudokuTableElem = $('.sudoku');
 
+    sudokuMain.initialize(); // Start the game up
+
+    sudokuTableElem.css('width', sudokuTableElem.css('height')); // Initialize width of the table
+
+    // Update table width when window is resized
+    $(window).resize(function() {
+        sudokuTableElem.css('width', sudokuTableElem.css('height'));
+    })
 });

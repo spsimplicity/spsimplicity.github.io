@@ -20,3 +20,12 @@ gulp.task('build-js', function() {
         .pipe(rename('sudoku.js'))
         .pipe(gulp.dest('./'));
 });
+
+gulp.task('build-less', function() {
+    return gulp
+        .src('less/sudoku.less')
+        .pipe(less())
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('build-all', ['build-index', 'build-js', 'build-less']);

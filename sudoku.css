@@ -25,7 +25,7 @@
 .sudoku tr td .quadrant5,
 .sudoku tr td .quadrant7,
 .sudoku tr td .quadrant9 {
-  background-color: lightgrey;
+  background-color: darkgray;
 }
 .errorText {
   color: red;

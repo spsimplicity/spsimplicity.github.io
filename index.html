@@ -8,13 +8,13 @@
     <script type="text/javascript" src="sudoku.js"></script>
   </head>
   <body>
-    <button>New Board</button>
-    <button>Clear Board</button>
+    <button onclick="sudokuMain.newBoard()">New Board</button>
+    <button onclick="sudokuMain.clearBoard()">Clear Board</button>
     <p class="errorText"></p>
     <table class="sudoku">
       <tr class="row9">
         <td class="col9">
-          <input size="1" type="text" onkeyup="sudokuMain.setCell(event, 9, 9)" class="numInput quadrant1"/>
+          <input size="1" type="text" onkeyup="sudokuMain.setCell(event, 9, 9)" class="numInput quadrant9"/>
         </td>
       </tr>
     </table>

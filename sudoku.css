@@ -1,0 +1,47 @@
+.sudoku {
+  height: 100% !important;
+  border: 5px solid black;
+}
+.sudoku.complete {
+  border-color: green;
+}
+.sudoku tr td {
+  height: 11.11111111%;
+}
+.sudoku tr td input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  text-align: center;
+}
+.sudoku tr td input:disabled {
+  border-color: grey;
+}
+.sudoku tr td input.error {
+  outline-color: red;
+}
+.sudoku tr td .quadrant1,
+.sudoku tr td .quadrant3,
+.sudoku tr td .quadrant5,
+.sudoku tr td .quadrant7,
+.sudoku tr td .quadrant9 {
+  background-color: lightgrey;
+}
+.errorText {
+  color: red;
+}
+@media only screen {
+  .sudoku tr td input {
+    font-size: small;
+  }
+}
+@media only screen and (min-width: 560px) {
+  .sudoku tr td input {
+    font-size: medium;
+  }
+}
+@media only screen and (min-width: 896px) {
+  .sudoku tr td input {
+    font-size: large;
+  }
+}

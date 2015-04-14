@@ -5,13 +5,34 @@ html
       title Sudoku
       link(rel="stylesheet" type="text/css" href="sudoku.css")
       script(type="text/javascript" src="sudoku.js")
+
    body
-      button() New Board
-      button() Clear Board
+      button(onclick="sudokuMain.newBoard()") New Board
+      button(onclick="sudokuMain.clearBoard()") Clear Board
       p.errorText
       table.sudoku
          - for(var row=0; row < 9; row++)
-         tr(class="row" + row)
+         tr(class="row"+row)
             -for(var col=0; col < 9; col++)
-            td(class="col" + col)
-               input.numInput.quadrant1(size="1" type="text" onkeyup="sudokuMain.setCell(event, " + row + ", " + col + ")")
+            td(class="col"+col)
+               if(row < 3)
+                  if(col < 3)
+                     input.numInput.quadrant1(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+                  else if(col < 6)
+                     input.numInput.quadrant2(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+                  else
+                     input.numInput.quadrant3(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+               else if(row < 6)
+                  if(col < 3)
+                     input.numInput.quadrant4(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+                  else if(col < 6)
+                     input.numInput.quadrant5(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+                  else
+                     input.numInput.quadrant6(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+               else
+                  if(col < 3)
+                     input.numInput.quadrant7(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+                  else if(col < 6)
+                     input.numInput.quadrant8(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")
+                  else
+                     input.numInput.quadrant9(size="1" type="text" onkeyup="sudokuMain.setCell(event, "+row+", "+col+")")

@@ -153,6 +153,28 @@ window.sudokuMain = (function() {
                 cookieStorage.setItem('sudokuBoard', JSON.stringify(this.board), Infinity);
             }
         },
+        // Clear the current board
+        clearBoard: function() {
+            if(typeof localStorage !== "undefined" || localStorage !== null) {
+                localStorage.removeItem('sudokuBoard');
+            } else {
+                cookieStorage.removeItem('sudokuBoard');
+            }
+
+            $('input').val('');
+
+            this.board = null;
+
+            this.initialize();
+        },
+        // Fetch a new board
+        newBoard: function() {
+            $('input').val('');
+
+            this.board = null;
+
+            this.initialize('sudokuBoard2');
+        },
         // Set value of the board
         setCell: function (event, row, col) {
             var digitReg  = /^\d$/,          // Regex to make sure only a single number is entered
@@ -189,7 +211,7 @@ window.sudokuMain = (function() {
 
             this.saveBoard();
         }
-    };
+    }
 })();
 
 $(document).ready(function() {

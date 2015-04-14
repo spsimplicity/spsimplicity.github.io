@@ -162,6 +162,7 @@ window.sudokuMain = (function() {
             }
 
             $('input').val('');
+            $('input').removeAttr('disabled');
 
             this.board = null;
 
@@ -170,6 +171,7 @@ window.sudokuMain = (function() {
         // Fetch a new board
         newBoard: function() {
             $('input').val('');
+            $('input').removeAttr('disabled');
 
             this.board = null;
 

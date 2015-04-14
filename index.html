@@ -1,1 +1,22 @@
-Hello World
+
+<!-- Created by Simplicity on 4/13/2015.-->
+<html>
+  <head>
+    <meta charset="UTF8"/>
+    <title>Sudoku</title>
+    <link rel="stylesheet" type="text/css" href="sudoku.css"/>
+    <script type="text/javascript" src="sudoku.js"></script>
+  </head>
+  <body>
+    <button>New Board</button>
+    <button>Clear Board</button>
+    <p class="errorText"></p>
+    <table class="sudoku">
+      <tr class="row9">
+        <td class="col9">
+          <input size="1" type="text" onkeyup="sudokuMain.setCell(event, 9, 9)" class="numInput quadrant1"/>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

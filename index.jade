@@ -1,0 +1,17 @@
+// Created by Simplicity on 4/13/2015.
+html
+   head
+      meta(charset="UTF8")
+      title Sudoku
+      link(rel="stylesheet" type="text/css" href="sudoku.css")
+      script(type="text/javascript" src="sudoku.js")
+   body
+      button() New Board
+      button() Clear Board
+      p.errorText
+      table.sudoku
+         - for(var row=0; row < 9; row++)
+         tr(class="row" + row)
+            -for(var col=0; col < 9; col++)
+            td(class="col" + col)
+               input.numInput.quadrant1(size="1" type="text" onkeyup="sudokuMain.setCell(event, " + row + ", " + col + ")")

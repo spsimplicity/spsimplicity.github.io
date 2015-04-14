@@ -12,3 +12,11 @@ gulp.task('build-index', function() {
         }))
         .pipe(gulp.dest('./'));
 });
+
+gulp.task('build-js', function() {
+    return gulp
+        .src('javascript/main.js')
+        .pipe(browserify({}))
+        .pipe(rename('sudoku.js'))
+        .pipe(gulp.dest('./'));
+});

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Slack Test</title>
+        <link rel="stylesheet" href="CSS/photoList.css"/>
+    </head>
+    <body>
+        <p class="photoError"></p>
+        <div class="photoList clearFix"></div>
+        <div class="lightBox">
+            <div class="boxShadow"></div>
+            <a class="close" onclick="closeLightBox()">X</a>
+            <div class="focusedImage clearFix">
+                <a class="move prev" onclick="prevLightBoxImage()">Prev</a>
+                <div class="selected clearFix"></div>
+                <a class="move next" onclick="nextLightBoxImage()">Next</a>
+            </div>
+        </div>
+        <script type="text/javascript" src="JS/photoRequestService.js"></script>
+        <script type="text/javascript" src="JS/photo.js"></script>
+        <script type="text/javascript" src="JS/photoList.js"></script>
+    </body>
+</html>

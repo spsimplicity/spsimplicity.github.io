@@ -4,21 +4,83 @@
         <meta charset="UTF-8">
         <title>Slack Test</title>
         <link rel="stylesheet" href="CSS/photoList.css"/>
+        <script type="text/javascript">
+            /* Compare two lists to see if one ingredient is in the other */
+            const listOfBadThingsForSarahsFace = ['A & D additive', 'Acetylated lanolin alcohol', 'Almond oil', 
+                                                  'Apricot kernel oil', 'Ascorbyl palmitate', 'Avocado oil', 
+                                                  'Beeswax', 'Betyl stearate', 'Butyl sterate', 'Capric acid', 'Ceramides', 
+                                                  'Cereayl alcohol + ceteareth 20', 'Ceteareth-20', 'Cetearyl alcohol', 
+                                                  'Cetyl acetate', 'Cetyl alcohol', 'Coal tar', 'Cocoa butter', 
+                                                  'Coconut butter', 'Coconut oil', 'Cocos nucifera', 'Corn oil', 
+                                                  'Cotton seed oil', 'D&C red', 'Decaglyceryl decaoleate', 'Deyl oleate', 
+                                                  'Di (2 ethylhexyl) succinate', 'Dioctyl malate', 'Dioctyl succinate', 
+                                                  'Eicosanoic acid', 'Ethoxylated lanolins', 'Ethylhexyl palmitate', 
+                                                  'Ethylhexyl pelargonate', 'Evening primrose oil', 'Flax seed oil', 
+                                                  'Glyceryl stearate SE', 'Glyceryl-3-diisostearate', 'Grapeseed oil', 
+                                                  'Hexylene glycol', 'Hydrogenated vegetable oil', 'Isocetyl alcohol', 
+                                                  'Isocetyl stearate', 'Isodecyl oleate', 'Isoparaffin C9-11', 
+                                                  'Isopropyl isostearate', 'Isopropyl lanolate', 'Isopropyl linolate', 
+                                                  'Isopropyl myristate', 'Isopropyl neopentanoate', 'Isopropyl palmitate', 
+                                                  'Isostearic acid', 'Isostearyl alcohol', 'Isostearyl isostearate', 
+                                                  'Isostearyl neopentanoate', 'Laneth-10', 'Lanolic acid', 'Lanolin alcohol', 
+                                                  'Laureth-23', 'Laureth-4', 'Lauric acid', 'Linoleic acid', 'Linolenic acid', 
+                                                  'Linseed oil', 'Mineral oil', 'Mink oil', 'Mink oil, refined', 
+                                                  'Myreth-3 myristate', 'Myristic acid', 'Myristyl alcohol', 
+                                                  'Myristyl lactate', 'Myristyl myristate','Octyl palmitate', 
+                                                  'Octyl stearate', 'Octyldodecanol', 'Olea europaea fruit oil', 
+                                                  'Oleic acid (in natural oils)','Oleth-10', 'Oleth-3', 'Oleth-3 phosphate', 
+                                                  'Oleth-5', 'Oleyl alcohol', 'Olive oil', 'Palm oil', 'Palmitic acid', 
+                                                  'Peach kernel oil', 'Peanut oil', 'PEG 100 distearate', 
+                                                  'PEG 150 distearate', 'PEG 16 lanolin', 'PEG 200 dilaurate', 
+                                                  'PEG 8 stearate', 'PG caprylate/caprate', 
+                                                  'Pentaerythrital tetra isostearate', 'PG dipelargonate', 'PG monostearate', 
+                                                  'Phytanriol', 'Polyglyceryl-3-diisostearate', 'PPG 10 cetyl ether', 
+                                                  'PPG 12 PEG 65 lanolin oil', 'PPG 2 myristyl propionate', 
+                                                  'PPG 5 Ceteth 10 phosphate', 'Sandalwood seed oil', 'Sesame oil', 
+                                                  'Shark liver oil', 'Sorbitan isostearate', 'Sorbitan laurate', 
+                                                  'Sorbitan oleate', 'Soybean oil', 'Steareth-10', 'Steareth-20', 
+                                                  'Stearic acid', 'Stearic acid: TEA', 'Stearyl alcohol', 
+                                                  'Stearyl heptanoate', 'Sulfulated jojoba oil', 'Sweet almond oil', 
+                                                  'Triethanoleamine', 'Vitamin A palmitate', 'Vitis vinifera seed extract', 
+                                                  'Water-soluble sulfur', 'Wheat germ glyceride', 'Wheat germ oil', 
+                                                  'Xylene'];
+
+            let areThereBadThings = false;
+            let theBadIngredientsAre = [];
+
+            function testIngredients() {
+                const makeupIngredientList = document.querySelector('.ingredients').value;
+
+                listOfBadThingsForSarahsFace.forEach( (item) => {
+                    if(makeupIngredientList.includes(item)) {
+                        areThereBadThings = true;
+                        theBadIngredientsAre.push(item);
+                    }
+                });
+
+                if(areThereBadThings) {
+                    document.querySelector('.results').innerText = 'Yes it does!\n' + theBadIngredientsAre.join(', ');
+                } else {
+                    document.querySelector('.results').innerText = 'No, its cool.';
+                }
+            }
+        </script>
+        <style>
+            .ingredients {
+                width: 400px;
+                height 300px;
+                display: block;
+            }
+        </style>
     </head>
     <body>
-        <p class="photoError"></p>
-        <div class="photoList clearFix"></div>
-        <div class="lightBox">
-            <div class="boxShadow"></div>
-            <a class="close" onclick="closeLightBox()">X</a>
-            <div class="focusedImage clearFix">
-                <a class="move prev" onclick="prevLightBoxImage()">Prev</a>
-                <div class="selected clearFix"></div>
-                <a class="move next" onclick="nextLightBoxImage()">Next</a>
-            </div>
+        <div>
+            <button onClick="testIngredients()">
+                Test Ingredients
+            </button>
+            <p>Does this makeup have bad things for sarahs face?</p>
+            <textarea class="ingredients"></textarea>
+            <p class="results"></p>
         </div>
-        <script type="text/javascript" src="JS/photoRequestService.js"></script>
-        <script type="text/javascript" src="JS/photo.js"></script>
-        <script type="text/javascript" src="JS/photoList.js"></script>
     </body>
 </html>

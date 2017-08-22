@@ -1,13 +1,1 @@
-This is my Slack test project.
 
-I made a simple service to request the data for the photos. It includes stubs for other possible apis that could
-be contacted by the service. There are also a few basic tests to make sure things are working.
-
-The app starts on page load and requests photos from a specific flickr group photo pool. It takes the first 50 and
-puts them on the page. This could be expanded to include pages of photos or dynamic loading of new photos when scrolling
-to the bottom of the page.
-
-The light box opens when a photo is clicked and provides buttons to move to the previous and next images in the list.
-I only put basic styling for the light box. I could have done better transitions when moving from previous to next.
-close the light box you need to click the X in the top right. I didn't make it close when clicking the opaque in case
-a user misses clicking the prev/next and closes it on accident.

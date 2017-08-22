@@ -44,11 +44,13 @@
                                                   'Triethanoleamine', 'Vitamin A palmitate', 'Vitis vinifera seed extract', 
                                                   'Water-soluble sulfur', 'Wheat germ glyceride', 'Wheat germ oil', 
                                                   'Xylene'];
-            let areThereBadThings = false;
-            let theBadIngredientsAre = [];
+            
             function testIngredients() {
                 const results = document.querySelector('.results');
                 const makeupIngredientList = document.querySelector('.ingredients').value;
+                
+                let areThereBadThings = false;
+                let theBadIngredientsAre = [];
                 
                 results.innerHTML = '';
                 

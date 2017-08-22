@@ -49,7 +49,10 @@
             let theBadIngredientsAre = [];
 
             function testIngredients() {
+                const results = document.querySelector('.results');
                 const makeupIngredientList = document.querySelector('.ingredients').value;
+                
+                results.innerText = '';
 
                 listOfBadThingsForSarahsFace.forEach( (item) => {
                     if(makeupIngredientList.includes(item)) {
@@ -59,9 +62,9 @@
                 });
 
                 if(areThereBadThings) {
-                    document.querySelector('.results').innerText = 'Yes it does!\n' + theBadIngredientsAre.join(', ');
+                    results.innerText = 'Yes it does!\n' + theBadIngredientsAre.join(', ');
                 } else {
-                    document.querySelector('.results').innerText = 'No, its cool.';
+                    results.innerText = 'No, its cool.';
                 }
             }
         </script>

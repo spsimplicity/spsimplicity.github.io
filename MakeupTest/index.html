@@ -50,7 +50,8 @@
                 const results = document.querySelector('.results');
                 const makeupIngredientList = document.querySelector('.ingredients').value;
                 
-                results.innerText = '';
+                results.innerHTML = '';
+                
                 listOfBadThingsForSarahsFace.forEach( (item) => {
                     if(makeupIngredientList.includes(item)) {
                         areThereBadThings = true;
@@ -58,9 +59,9 @@
                     }
                 });
                 if(areThereBadThings) {
-                    results.innerText = 'Yes it does!\n' + theBadIngredientsAre.join(', ');
+                    results.innerHTML = 'Yes it does!\n' + theBadIngredientsAre.join(', ');
                 } else {
-                    results.innerText = 'No, its cool.';
+                    results.innerHTML = 'No, its cool.';
                 }
             }
         </script>
